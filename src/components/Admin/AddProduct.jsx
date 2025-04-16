@@ -136,15 +136,15 @@ function AddProduct() {
     return (
         <div className="pt-20">
             <div
-                className="block md:hidden bg-purple-800 text-white text-center rounded-full m-4 w-28 p-2 right-2"
+                className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2"
                 onClick={handlePanel}
             >
                 <p>{isOpen ? 'Close Panel' : 'Open Panel'}</p>
             </div>
-            <div className="flex h-full bg-purple-800 font-poppins">
+            <div className="flex h-full bg-teal-600 font-poppins">
                 {/* Sidebar */}
                 <div
-                    className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-purple-800 text-white flex flex-col ${
+                    className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${
                         isOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-all duration-100`}
                 >
@@ -326,7 +326,7 @@ function AddProduct() {
                                         <button
                                             type="button"
                                             onClick={() => handleAddPointToDescription(index)}
-                                            className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                                            className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                                         >
                                             Add Point
                                         </button>
@@ -349,7 +349,7 @@ function AddProduct() {
                             <button
                                 type="button"
                                 onClick={handleAddDescription}
-                                className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                                className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                             >
                                 Add Description Section
                             </button>
@@ -418,7 +418,7 @@ function AddProduct() {
                                                 <button
                                                     type="button"
                                                     onClick={() => handleAddPointToAnswer(faqIndex, answerIndex)}
-                                                    className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                                                    className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                                                 >
                                                     Add Point
                                                 </button>
@@ -442,7 +442,7 @@ function AddProduct() {
                                         <button
                                             type="button"
                                             onClick={() => handleAddAnswerTitle(faqIndex)}
-                                            className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                                            className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                                         >
                                             Add Answer
                                         </button>
@@ -465,7 +465,7 @@ function AddProduct() {
                             <button
                                 type="button"
                                 onClick={handleAddFaq}
-                                className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                                className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                             >
                                 Add FAQ
                             </button>
@@ -474,7 +474,7 @@ function AddProduct() {
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            className="bg-purple-800 text-white px-6 py-3 rounded-lg w-full flex justify-center items-center"
+                            className="bg-teal-600 text-white px-6 py-3 rounded-lg w-full flex justify-center items-center"
                             disabled={loading}
                         >
                             {loading ? (

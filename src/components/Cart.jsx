@@ -199,7 +199,7 @@ function Cart() {
             {loading ? (
                 <div className="pt-20 flex items-center justify-center h-screen">
                     <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
                         <p className="text-lg text-gray-700">Loading Cart Items...</p>
                     </div>
                 </div>
@@ -259,7 +259,7 @@ function Cart() {
                                             </label>
                                             <div className="flex ms-2">
                                                 <div
-                                                    className="bg-purple-200 text-purple-800 py-2 px-3 text-sm md:text-base rounded-full cursor-pointer"
+                                                    className="bg-teal-200 text-teal-600 py-2 px-3 text-sm md:text-base rounded-full cursor-pointer"
                                                     onClick={() =>
                                                         updateQuantity(item.product._id, item.quantity - 1)
                                                     }
@@ -268,7 +268,7 @@ function Cart() {
                                                 </div>
                                                 <div className="p-2 px-4">{item.quantity}</div>
                                                 <div
-                                                    className="bg-purple-200 text-purple-800 py-2 px-3 text-sm md:text-base rounded-full cursor-pointer"
+                                                    className="bg-teal-200 text-teal-600 py-2 px-3 text-sm md:text-base rounded-full cursor-pointer"
                                                     onClick={() =>
                                                         updateQuantity(item.product._id, item.quantity + 1)
                                                     }
@@ -280,7 +280,7 @@ function Cart() {
                                         <div className="flex flex-col gap-4 items-end">
                                             <div
                                                 onClick={() => removeItem(item.product._id)}
-                                                className="bg-purple-200 text-purple-800 py-2 px-4 text-sm md:text-base rounded-lg cursor-pointer"
+                                                className="bg-teal-200 text-teal-600 py-2 px-4 text-sm md:text-base rounded-lg cursor-pointer"
                                             >
                                                 <FontAwesomeIcon icon={faTrash} size="lg" />
                                             </div>
@@ -309,7 +309,7 @@ function Cart() {
                                 <div onClick={() => setShowCheckoutForm(true)} className="bg-purple-900 p-2 my-2 rounded-full text-white font-semibold cursor-pointer">
                                     Checkout
                                 </div>
-                                <div onClick={emptyCart} className="bg-purple-200 p-2 my-2 rounded-full text-purple-800 font-semibold cursor-pointer">
+                                <div onClick={emptyCart} className="bg-teal-200 p-2 my-2 rounded-full text-teal-600 font-semibold cursor-pointer">
                                     Empty Cart
                                 </div>
                             </div>
@@ -375,7 +375,7 @@ function Cart() {
                             </div>
                             <button
                                 type="submit"
-                                className="bg-purple-800 text-white px-4 py-2 rounded-lg w-full"
+                                className="bg-teal-600 text-white px-4 py-2 rounded-lg w-full"
                             >
                                 Place Order
                             </button>
@@ -400,7 +400,7 @@ function Cart() {
                         <p className="mb-2"><strong>Paid At:</strong> {new Date(orderDetails.paidAt).toLocaleString()}</p>
                         <button
                             onClick={() => setShowOrderConfirmation(false)}
-                            className="bg-purple-800 text-white px-4 py-2 rounded-lg w-full mt-4"
+                            className="bg-teal-600 text-white px-4 py-2 rounded-lg w-full mt-4"
                         >
                             Close
                         </button>

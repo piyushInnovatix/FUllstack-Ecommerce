@@ -108,7 +108,7 @@ function Wishlist() {
             {loading && (
                 <div className="pt-20 flex items-center justify-center h-screen">
                 <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
                   <p className="text-lg text-gray-700">Loading Wishlist Items...</p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ function Wishlist() {
                                         <div className="flex gap-4 items-end">
                                             <button
                                                 onClick={() => handleCart(item._id)}
-                                                className="bg-purple-800 text-white py-2 px-4 text-sm md:text-base rounded-lg"
+                                                className="bg-teal-600 text-white py-2 px-4 text-sm md:text-base rounded-lg"
                                             >
                                                 Add to Cart
                                             </button>

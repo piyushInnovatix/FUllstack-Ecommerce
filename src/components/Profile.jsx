@@ -151,7 +151,7 @@ function Profile() {
     return (
         <>
             {!token ? (<form className="py-44 font-poppins" onSubmit={handleSubmit}>
-                <div className="bg-white border border-purple-200 w-2/3 lg:w-1/2 mx-auto p-6 rounded-3xl text-center">
+                <div className="bg-white border border-teal-200 w-2/3 lg:w-1/2 mx-auto p-6 rounded-3xl text-center">
                     <div className="my-8">
                         <h1 className="text-2xl lg:text-4xl ">
                             {signedUp ? 'Hi There!' : 'Welcome Back!'}
@@ -395,7 +395,7 @@ function Profile() {
             </form>
             ) : (
                 <div className="pt-48 pb-16 px-4 sm:px-8 lg:px-36 font-poppins bg-gray-50">
-                    <div className="bg-white border border-purple-200 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
+                    <div className="bg-white border border-teal-200 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
                         {/* Left Section: Profile Info */}
                         <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-2/3">
                             <h1 className="text-4xl sm:text-5xl font-semibold text-purple-900 text-center md:text-left">

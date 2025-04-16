@@ -49,7 +49,7 @@ function RecentOrders() {
     return (
       <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
         <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
           <p className="text-lg text-gray-700">Loading orders...</p>
         </div>
       </div>
@@ -70,15 +70,15 @@ function RecentOrders() {
   return (
     <div className="pt-20">
       <button 
-        className="block md:hidden bg-purple-800 text-white text-center rounded-full m-4 w-28 p-2 fixed right-2 z-10"
+        className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 fixed right-2 z-10"
         onClick={handlePanel}
       >
         {isOpen ? "Close Panel" : "Open Panel"}
       </button>
       
-      <div className="flex h-full bg-purple-800 font-poppins">
+      <div className="flex h-full bg-teal-600 font-poppins">
         {/* Sidebar */}
-        <div className={`fixed md:relative w-64 h-screen bg-purple-800 text-white flex flex-col z-20 
+        <div className={`fixed md:relative w-64 h-screen bg-teal-600 text-white flex flex-col z-20 
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-all duration-300`}>
           <div className="p-6 text-2xl font-bold border-b border-purple-700">
             Admin Panel
@@ -108,9 +108,9 @@ function RecentOrders() {
           {/* Orders Cards for Mobile */}
           <div className="md:hidden space-y-4">
             {orders.map((order) => (
-              <div key={order._id} className="bg-white shadow rounded-lg p-4 border-l-4 border-purple-800">
+              <div key={order._id} className="bg-white shadow rounded-lg p-4 border-l-4 border-teal-600">
                 <div className="flex justify-between items-center mb-3">
-                  <span className="font-semibold text-sm text-purple-800">Order #{order._id.slice(-6)}</span>
+                  <span className="font-semibold text-sm text-teal-600">Order #{order._id.slice(-6)}</span>
                   <span className="text-sm text-gray-500">{formatDate(order.createdAt)}</span>
                 </div>
                 <div className="mb-2">
@@ -132,7 +132,7 @@ function RecentOrders() {
                 </div>
                 <div className="flex justify-between items-center mt-3 pt-2 border-t border-gray-200">
                   <span className="text-sm">Payment: {order.paymentInfo.type}</span>
-                  <span className="font-bold text-purple-800">₹{order.totalAmount}</span>
+                  <span className="font-bold text-teal-600">₹{order.totalAmount}</span>
                 </div>
               </div>
             ))}

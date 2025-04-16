@@ -124,7 +124,7 @@ function ProductPage() {
         return (
             <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
                 <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
                     <p className="text-lg text-gray-700">Loading Product...</p>
                 </div>
             </div>);
@@ -261,10 +261,10 @@ function ProductPage() {
                     </div>
 
                     <div className="flex flex-col lg:flex-row justify-center lg:justify-start my-6 gap-4">
-                        <button onClick={() => setCheckoutFrom(true)} className="bg-purple-800 text-white w-full lg:w-auto py-3 px-6 rounded-full">
+                        <button onClick={() => setCheckoutFrom(true)} className="bg-teal-600 text-white w-full lg:w-auto py-3 px-6 rounded-full">
                             Buy Now
                         </button>
-                        <button className="bg-purple-200 text-purple-800 w-full lg:w-auto py-3 px-6 rounded-full">
+                        <button className="bg-teal-200 text-teal-600 w-full lg:w-auto py-3 px-6 rounded-full">
                             Add to Wishlist
                         </button>
                     </div>
@@ -340,7 +340,7 @@ function ProductPage() {
                 {reviews.length > 0 ? (
                     <div className="reviews mt-4">
                         {reviews.map((review, index) => (
-                            <div key={index} className="review border border-purple-200 p-4 rounded-lg mb-4">
+                            <div key={index} className="review border border-teal-200 p-4 rounded-lg mb-4">
                                 {/* User Information */}
                                 <div className="flex items-center mb-2">
                                     <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center mr-3">
@@ -396,7 +396,7 @@ function ProductPage() {
                     </div>
                     <button
                         type="submit"
-                        className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                        className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                     >
                         Submit Review
                     </button>
@@ -460,7 +460,7 @@ function ProductPage() {
                             </div>
                             <button
                                 type="submit"
-                                className="bg-purple-800 text-white px-4 py-2 rounded-lg w-full"
+                                className="bg-teal-600 text-white px-4 py-2 rounded-lg w-full"
                             >
                                 Place Order
                             </button>
@@ -485,7 +485,7 @@ function ProductPage() {
                         <p className="mb-2"><strong>Paid At:</strong> {new Date(orderDetails.paidAt).toLocaleString()}</p>
                         <button
                             onClick={() => setshowOrderConfirmation(false)}
-                            className="bg-purple-800 text-white px-4 py-2 rounded-lg w-full mt-4"
+                            className="bg-teal-600 text-white px-4 py-2 rounded-lg w-full mt-4"
                         >
                             Close
                         </button>

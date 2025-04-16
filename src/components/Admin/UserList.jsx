@@ -65,7 +65,7 @@ function UserList() {
         return (
             <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
                 <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
                     <p className="text-lg text-gray-700">Loading Users...</p>
                 </div>
             </div>);
@@ -77,12 +77,12 @@ function UserList() {
 
     return (
         <div className='pt-20'>
-            <div className='block md:hidden bg-purple-800 text-white text-center rounded-full m-4 w-28 p-2 right-2' onClick={handlePanle}>
+            <div className='block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2' onClick={handlePanle}>
                 <p>{isOpen ? ("Close Panel") : ("Open Panel")}</p>
             </div>
-            <div className="flex flex-col md:flex-row h-full bg-purple-800 font-poppins">
+            <div className="flex flex-col md:flex-row h-full bg-teal-600 font-poppins">
                 {/* Sidebar */}
-                <div className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-purple-800 text-white flex flex-col ${isOpen ? ("translate-x-0") : ("-translate-x-full")} transition-all duration-100`}>
+                <div className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? ("translate-x-0") : ("-translate-x-full")} transition-all duration-100`}>
                     <div className="p-6 text-2xl font-bold border-b border-purple-700">
                         Admin Panel
                     </div>
@@ -134,7 +134,7 @@ function UserList() {
                                             </button>
                                             <button
                                                 onClick={() => handleDetails(user._id)}
-                                                className="bg-purple-800 mx-2 text-white px-4 py-2 rounded-lg text-xs md:text-sm"
+                                                className="bg-teal-600 mx-2 text-white px-4 py-2 rounded-lg text-xs md:text-sm"
                                             >
                                                 Details
                                             </button>

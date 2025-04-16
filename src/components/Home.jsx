@@ -105,12 +105,12 @@ function Home() {
                         <div className='btn-container opacity-0 pointer-events-none flex-col absolute top-2 right-3'>
                             <FontAwesomeIcon
                                 onClick={() => handleCart(product._id)}
-                                className="text-purple-800 bg-purple-200 w-[45%] m-2 p-2 rounded-full text-xs hover:scale-105 transform-transition duration-300"
+                                className="text-teal-600 bg-teal-200 w-[45%] m-2 p-2 rounded-full text-xs hover:scale-105 transform-transition duration-300"
                                 icon={faCartShopping} size='lg'
                             />
                             <FontAwesomeIcon
                                 onClick={() => handleFavs(product._id)}
-                                className="text-purple-800 bg-purple-200 w-[45%] m-2 p-2 rounded-full text-xs hover:scale-105 transform-transition duration-300"
+                                className="text-teal-600 bg-teal-200 w-[45%] m-2 p-2 rounded-full text-xs hover:scale-105 transform-transition duration-300"
                                 icon={faBookmark} size='lg'
                             />
                         </div>
@@ -143,12 +143,12 @@ function Home() {
                         <div className="flex justify-between mt-2 lg:hidden">
                             <FontAwesomeIcon
                                 onClick={() => handleCart(product._id)}
-                                className="text-white bg-purple-800 w-[45%] mx-2 p-2 rounded-xl text-xs hover:scale-105 transform-transition duration-300"
+                                className="text-white bg-teal-600 w-[45%] mx-2 p-2 rounded-xl text-xs hover:scale-105 transform-transition duration-300"
                                 icon={faCartShopping} size='sm'
                             />
                             <FontAwesomeIcon
                                 onClick={() => handleFavs(product._id)}
-                                className="text-white bg-purple-800 w-[45%] mx-2 p-2 rounded-xl text-xs hover:scale-105 transform-transition duration-300"
+                                className="text-white bg-teal-600 w-[45%] mx-2 p-2 rounded-xl text-xs hover:scale-105 transform-transition duration-300"
                                 icon={faBookmark} size='sm'
                             />
                         </div>

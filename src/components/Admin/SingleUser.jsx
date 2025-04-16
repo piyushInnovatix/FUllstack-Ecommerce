@@ -87,7 +87,7 @@ function SingleUser() {
         return (
             <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
                 <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600 mx-auto mb-4"></div>
                     <p className="text-lg text-gray-700">Loading User Details...</p>
                 </div>
             </div>
@@ -100,7 +100,7 @@ function SingleUser() {
 
     return (
         <div className="py-32 px-6 lg:px-40 xl:px-60 font-poppins">
-            <div className="bg-white border border-purple-200 rounded-lg p-6">
+            <div className="bg-white border border-teal-200 rounded-lg p-6">
                 <h1 className="text-3xl font-bold mb-6">User Details</h1>
                 <div className="space-y-4">
                     <p className="text-lg">
@@ -119,13 +119,13 @@ function SingleUser() {
                 <div className="mt-6 flex gap-4">
                     <button
                         onClick={fetchCartItems}
-                        className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                        className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                     >
                         Show Cart Items
                     </button>
                     <button
                         onClick={fetchWishlistItems}
-                        className="bg-purple-800 text-white px-4 py-2 rounded-lg"
+                        className="bg-teal-600 text-white px-4 py-2 rounded-lg"
                     >
                         Show Wishlist Items
                     </button>
