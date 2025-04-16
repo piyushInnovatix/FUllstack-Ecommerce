@@ -86,25 +86,25 @@ function Dashboard() {
                         isOpen ? 'translate-x-0' : '-translate-x-full'
                     } transition-all duration-100`}
                 >
-                    <div className="p-6 text-2xl font-bold border-b border-purple-700">Admin Panel</div>
+                    <div className="p-6 text-2xl font-bold border-b border-teal-700">Admin Panel</div>
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to="/userList" className="block">
                                     Registered Users
                                 </Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to="/orderList" className="block">
                                     Recent Orders
                                 </Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to="/productList" className="block">
                                     Product List
                                 </Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to="/addProduct" className="block">
                                     Add Product
                                 </Link>

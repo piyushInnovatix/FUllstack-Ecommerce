@@ -83,21 +83,21 @@ function UserList() {
             <div className="flex flex-col md:flex-row h-full bg-teal-600 font-poppins">
                 {/* Sidebar */}
                 <div className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? ("translate-x-0") : ("-translate-x-full")} transition-all duration-100`}>
-                    <div className="p-6 text-2xl font-bold border-b border-purple-700">
+                    <div className="p-6 text-2xl font-bold border-b border-teal-700">
                         Admin Panel
                     </div>
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to={"/userList"} className="block">Registered Users</Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to={"/orderList"} className="block">Recent Orders</Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to={"/productList"} className="block">Product List</Link>
                             </li>
-                            <li className="hover:bg-purple-700 p-2 rounded">
+                            <li className="hover:bg-teal-700 p-2 rounded">
                                 <Link to={"/addProduct"} className="block">Add Product</Link>
                             </li>
                         </ul>

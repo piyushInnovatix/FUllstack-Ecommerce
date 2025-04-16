@@ -100,7 +100,7 @@ function Home() {
                 {product.map((product) => (
                     <div
                         key={product._id}
-                        className="product-card text-center relative lg:py-6 bg-white m-2 p-3 rounded-xl text-lg border border-purple-100  transition-shadow duration-300"
+                        className="product-card text-center relative lg:py-6 bg-white m-2 p-3 rounded-xl text-lg border border-teal-100  transition-shadow duration-300"
                     >
                         <div className='btn-container opacity-0 pointer-events-none flex-col absolute top-2 right-3'>
                             <FontAwesomeIcon

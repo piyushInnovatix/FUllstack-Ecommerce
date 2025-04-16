@@ -80,21 +80,21 @@ function RecentOrders() {
         {/* Sidebar */}
         <div className={`fixed md:relative w-64 h-screen bg-teal-600 text-white flex flex-col z-20 
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-all duration-300`}>
-          <div className="p-6 text-2xl font-bold border-b border-purple-700">
+          <div className="p-6 text-2xl font-bold border-b border-teal-700">
             Admin Panel
           </div>
           <nav className="flex-1 p-4">
             <ul className="space-y-4">
-              <li className="hover:bg-purple-700 p-2 rounded transition">
+              <li className="hover:bg-teal-700 p-2 rounded transition">
                 <Link to="/userList" className="block">Registered Users</Link>
               </li>
-              <li className="bg-purple-700 p-2 rounded">
+              <li className="bg-teal-700 p-2 rounded">
                 <Link to="/orderList" className="block">Recent Orders</Link>
               </li>
-              <li className="hover:bg-purple-700 p-2 rounded transition">
+              <li className="hover:bg-teal-700 p-2 rounded transition">
                 <Link to="/productList" className="block">Product List</Link>
               </li>
-              <li className="hover:bg-purple-700 p-2 rounded transition">
+              <li className="hover:bg-teal-700 p-2 rounded transition">
                 <Link to="/addProduct" className="block">Add Product</Link>
               </li>
             </ul>
@@ -103,7 +103,7 @@ function RecentOrders() {
 
         {/* Main Content */}
         <div className="flex-1 bg-gray-100 p-4 md:p-6 overflow-y-auto min-h-screen">
-          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-purple-900">Recent Orders</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-teal-900">Recent Orders</h1>
 
           {/* Orders Cards for Mobile */}
           <div className="md:hidden space-y-4">
@@ -142,13 +142,13 @@ function RecentOrders() {
           <div className="hidden md:block bg-white shadow rounded-lg p-6 overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-purple-50 text-left">
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Order ID</th>
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Customer</th>
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Items</th>
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Total</th>
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Status</th>
-                  <th className="p-3 font-semibold text-purple-900 border-b-2 border-purple-100">Date</th>
+                <tr className="bg-teal-50 text-left">
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Order ID</th>
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Customer</th>
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Items</th>
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Total</th>
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Status</th>
+                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Date</th>
                 </tr>
               </thead>
               <tbody>

@@ -398,7 +398,7 @@ function Profile() {
                     <div className="bg-white border border-teal-200 rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
                         {/* Left Section: Profile Info */}
                         <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-2/3">
-                            <h1 className="text-4xl sm:text-5xl font-semibold text-purple-900 text-center md:text-left">
+                            <h1 className="text-4xl sm:text-5xl font-semibold text-teal-900 text-center md:text-left">
                                 Hello, {ProfiileDetails?.name || 'User'}!
                             </h1>
                             <div className="text-center md:text-left space-y-1">
@@ -415,19 +415,19 @@ function Profile() {
                         <div className="flex flex-col items-center md:items-end gap-4 w-full md:w-1/3">
                             <button
                                 onClick={() => navigate('/')}
-                                className="bg-purple-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
+                                className="bg-teal-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
                             >
                                 Home
                             </button>
                             <button
                                 onClick={() => navigate('/cart')}
-                                className="bg-purple-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
+                                className="bg-teal-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
                             >
                                 Cart
                             </button>
                             <button
                                 onClick={() => navigate('/wishlist')}
-                                className="bg-purple-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
+                                className="bg-teal-900 w-full md:w-32 text-white py-3 px-6 rounded-lg text-sm md:text-base"
                             >
                                 Wishlist
                             </button>

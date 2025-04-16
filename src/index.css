@@ -49,10 +49,10 @@
 }
 
 .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
-    color: blueviolet;
+    color: teal;
     opacity: 0.2;
 }
 
 .mySwiper .swiper-pagination-bullet-active{
-    background: blueviolet;
+    background: teal;
 }

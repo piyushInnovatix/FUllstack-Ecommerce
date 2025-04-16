@@ -217,7 +217,7 @@ function Cart() {
                     </h1>
                     <Link
                         to="/"
-                        className="bg-purple-900 text-white py-2 px-4 mt-4 inline-block rounded text-sm md:text-base"
+                        className="bg-teal-900 text-white py-2 px-4 mt-4 inline-block rounded text-sm md:text-base"
                     >
                         Browse Products
                     </Link>
@@ -229,7 +229,7 @@ function Cart() {
                         {cartItems.map((item) => (
                             <div
                                 key={item._id}
-                                className="flex flex-wrap md:flex-nowrap justify-center items-center product-card bg-white border border-purple-100 mx-6 my-6 p-6 md:p-8 rounded-xl gap-6"
+                                className="flex flex-wrap md:flex-nowrap justify-center items-center product-card bg-white border border-teal-100 mx-6 my-6 p-6 md:p-8 rounded-xl gap-6"
                             >
                                 {/* Product Image */}
                                 <img
@@ -290,7 +290,7 @@ function Cart() {
                             </div>
                         ))}
                     </div>
-                    <div className="my-6 mx-6 lg:flex-1 border border-purple-100 rounded-xl">
+                    <div className="my-6 mx-6 lg:flex-1 border border-teal-100 rounded-xl">
                         {cartItems.length > 0 && (
                             <div className="p-6 py-10 text-center">
                                 <h2 className="text-2xl mb-10 md:text-3xl font-semibold">
@@ -300,13 +300,13 @@ function Cart() {
                                     <span>Products:</span>{" "}
                                     <span className="text-gray-600">{totalProducts}</span>
                                 </div>
-                                <hr className="text-purple-100 w-[80%] mx-auto" />
+                                <hr className="text-teal-100 w-[80%] mx-auto" />
                                 <div className="flex justify-between my-4 text-xl md:text-2xl font-semibold">
                                     <span>Total:</span>{" "}
                                     <span className="text-gray-600">₹{totalPrice}</span>
                                 </div>
 
-                                <div onClick={() => setShowCheckoutForm(true)} className="bg-purple-900 p-2 my-2 rounded-full text-white font-semibold cursor-pointer">
+                                <div onClick={() => setShowCheckoutForm(true)} className="bg-teal-900 p-2 my-2 rounded-full text-white font-semibold cursor-pointer">
                                     Checkout
                                 </div>
                                 <div onClick={emptyCart} className="bg-teal-200 p-2 my-2 rounded-full text-teal-600 font-semibold cursor-pointer">

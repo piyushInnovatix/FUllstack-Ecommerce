@@ -38,25 +38,25 @@ function Navbar() {
                 <div className="flex items-center">
                     <Link to="/wishlist">
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-gray-400 hover:text-purple-900 transition-all duration-100"
+                            className="navIcons mx-3 text-gray-400 hover:text-teal-900 transition-all duration-100"
                             icon={faBookmark} size='lg'
                         />
                     </Link>
                     <Link to="/cart">
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-gray-400 hover:text-purple-900 transition-all duration-100"
+                            className="navIcons mx-3 text-gray-400 hover:text-teal-900 transition-all duration-100"
                             icon={faCartShopping} size='lg'
                         />
                     </Link>
                     <Link to="/profile">
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-gray-400 hover:text-purple-900 transition-all duration-100"
+                            className="navIcons mx-3 text-gray-400 hover:text-teal-900 transition-all duration-100"
                             icon={faUserLarge} size='lg'
                         />
                     </Link>
                     <div className='block md:hidden' onClick={handleClick}>
                         <FontAwesomeIcon
-                            className="barIcons mx-3 text-purple-900"
+                            className="barIcons mx-3 text-teal-900"
                             icon={faBars} size='lg'
                         />
                     </div>
@@ -65,35 +65,35 @@ function Navbar() {
 
             <div className={`font-poppins fixed top-0 right-0 h-screen w-[80%] bg-white z-40 shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className='float-right' onClick={handleClick}>
-                    <FontAwesomeIcon icon={faXmark} size='2x' className='p-4 text-purple-900' />
+                    <FontAwesomeIcon icon={faXmark} size='2x' className='p-4 text-teal-900' />
                 </div>
 
                 <div className='text-2xl p-4 pt-28'>
                     <ul className='flex flex-col gap-4 font-semibold'>
-                        <li className='border-b border-purple-100 pb-4'>Shop</li>
-                        <li className='border-b border-purple-100 pb-4'>About Us</li>
-                        <li className='border-b border-purple-100 pb-4'>FAQs</li>
+                        <li className='border-b border-teal-100 pb-4'>Shop</li>
+                        <li className='border-b border-teal-100 pb-4'>About Us</li>
+                        <li className='border-b border-teal-100 pb-4'>FAQs</li>
                         <li>Contact Us</li>
                     </ul>
                 </div>
                 <div className='flex jusitfy-between pt-10'>
                     <div className='block'>
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-purple-900"
+                            className="navIcons mx-3 text-teal-900"
                             icon={faFacebook} size='xl'
                         />
                     </div>
 
                     <div className='block'>
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-purple-900"
+                            className="navIcons mx-3 text-teal-900"
                             icon={faPinterest} size='xl'
                         />
                     </div>
 
                     <div className='block'>
                         <FontAwesomeIcon
-                            className="navIcons mx-3 text-purple-900"
+                            className="navIcons mx-3 text-teal-900"
                             icon={faInstagram} size='xl'
                         />
                     </div>

@@ -127,7 +127,7 @@ function Wishlist() {
                     </h1>
                     <Link
                         to="/"
-                        className="bg-purple-900 text-white py-2 px-4 mt-4 inline-block rounded text-sm md:text-base"
+                        className="bg-teal-900 text-white py-2 px-4 mt-4 inline-block rounded text-sm md:text-base"
                     >
                         Browse Products
                     </Link>
@@ -139,7 +139,7 @@ function Wishlist() {
                         {wishList.map((item) => (
                             <div
                                 key={item.id}
-                                className="flex flex-wrap md:flex-nowrap justify-center items-center product-card bg-white border border-purple-100 mx-6 my-6 p-6 md:p-8 rounded-xl gap-6"
+                                className="flex flex-wrap md:flex-nowrap justify-center items-center product-card bg-white border border-teal-100 mx-6 my-6 p-6 md:p-8 rounded-xl gap-6"
                             >
                                 {/* Product Image */}
                                 <img
