@@ -13,6 +13,7 @@ import AddProduct from './components/Admin/AddProduct.jsx'
 import UserList from './components/Admin/UserList.jsx'
 import RecentOrders from './components/Admin/RecentOrders.jsx'
 import ProductList from './components/Admin/ProductList.jsx'
+import SingleUser from './components/Admin/singleUser.jsx'
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ const route = createBrowserRouter(
       <Route path='/userList' element={<UserList />} />
       <Route path='/orderList' element={<RecentOrders />} />
       <Route path='/productList' element={<ProductList />} />
+      <Route path='/singleUser/:id' element={<SingleUser />} />
     </Route>
   )
 )

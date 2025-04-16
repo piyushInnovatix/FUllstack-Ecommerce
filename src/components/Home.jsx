@@ -14,7 +14,7 @@ function Home() {
     useEffect(() => {
         const loadProducts = async () => {
             try {
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/v1/product');
+                const response = await fetch('https://ecom-kl8f.onrender.com/api/product');
                 const data = await response.json();
                 setProduct(data.products);
             }
@@ -40,45 +40,56 @@ function Home() {
 
     const handleCart = async (productId) => {
         try {
-
             const token = localStorage.getItem("authToken")
-
-            const selectedProduct = product.find((item) => item._id === productId);
-            const response = await axios.post(`https://ecom-kl8f.onrender.com/api/v1/cart/${productId}`, {
-                productId: selectedProduct._id,
-                quantity: 1, 
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            console.log('Product added to cart:', response.data);
-            alert("Product Added to Cart")
+            if (!token) {
+                alert("You need to log in to add products to cart!");
+                return;
+            }
+            else {
+                const selectedProduct = product.find((item) => item._id === productId);
+                const response = await axios.post(`https://ecom-kl8f.onrender.com/api/cart/${productId}`, {
+                    productId: selectedProduct._id,
+                    quantity: 1,
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                console.log('Product added to cart:', response.data);
+                alert("Product Added to Cart")
+            }
         } catch (error) {
             console.error('Error adding product to cart:', error);
         }
     };
 
-    // const handleRemoveFromCart = async (productId) => {
-    //     try {
-    //         const response = await axios.delete(`https://ecom-kl8f.onrender.com/api/v1/cart/${productId}`);
-    //         console.log('Product removed from cart:', response.data);
-    //     } catch (error) {
-    //         console.error('Error removing product from cart:', error);
-    //     }
-    // };
-
     const handleFavs = async (productId) => {
         try {
+
+            const token = localStorage.getItem("authToken")
+
+            if (!token) {
+                alert("You need to log in to add product to watchlist!");
+                return;
+            }
+
             const selectedProduct = product.find((item) => item._id === productId);
-            const response = await axios.post('https://ecom-kl8f.onrender.com/api/v1/favorites', {
+            const response = await axios.post(`https://ecom-kl8f.onrender.com/api/auth/user/watchlist/${productId}`, {
                 productId: selectedProduct._id,
-            });
-            console.log('Product added to favorites:', response.data);
+            },
+                {
+                    headers: {
+                        Authorization: `Bearere ${token}`
+                    }
+                });
+            console.log('Product added to wishlist:', response.data);
+            alert("Product Added to Wishlistrt")
         } catch (error) {
-            console.error('Error adding product to favorites:', error);
+            console.error('Error adding product to wishlist:', error);
         }
     };
+
+    const imageUrl = "https://ecom-kl8f.onrender.com"
 
     return (
         <div className='pt-28 pb-10'>
@@ -105,10 +116,11 @@ function Home() {
                         </div>
 
                         <img
-                            src={product.productImages[0]?.url}
+                            src={product.productImages[0].url}
                             alt={product.name}
-                            className="h-48 mx-auto p-8 md:p-4 rounded-lg object-fill mb-4"
+                            className="h-48 mx-auto p-8 md:p-4 w-64 rounded-lg mb-4"
                         />
+                        {console.log(`${product.productImages[0]?.url}`)}
                         <Link to={`/product/${product._id}`}
                             state={{
                                 name: product.name,

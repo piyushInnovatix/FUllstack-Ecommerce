@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function UserList() {
 
@@ -12,13 +12,15 @@ function UserList() {
         setIsOpen(!isOpen)
     }
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         const fetchUsers = async () => {
             try {
                 setLoading(true);
 
                 const token = localStorage.getItem('authToken')
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/v1/admin/users', {
+                const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/admin/users', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -42,11 +44,11 @@ function UserList() {
             await fetch(`https://ecom-kl8f.onrender.com/api/v1/admin/user/${userId}`, { // Replace with your API endpoint
                 method: 'DELETE',
                 headers: {
-                    Authorization: `Bearer ${token}`    
+                    Authorization: `Bearer ${token}`
                 }
             });
             setUsers(users.filter((user) => user._id !== userId)
-        
+
             );
             alert('User deleted successfully!');
         } catch (err) {
@@ -55,15 +57,23 @@ function UserList() {
         }
     };
 
+    const handleDetails = (userId) => {
+        navigate(`/singleUser/${userId}`); // Navigate to the SingleUser page with the userId
+    };
+
     if (loading) {
-        return <div className="text-center py-28">Loading...</div>;
+        return (
+            <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
+                <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                    <p className="text-lg text-gray-700">Loading Users...</p>
+                </div>
+            </div>);
     }
 
     if (error) {
         return <div className="text-center text-red-500 py-28">{error}</div>;
     }
-
-
 
     return (
         <div className='pt-20'>
@@ -121,6 +131,12 @@ function UserList() {
                                                 className="bg-red-500 text-white px-4 py-2 rounded-lg text-xs md:text-sm"
                                             >
                                                 Delete
+                                            </button>
+                                            <button
+                                                onClick={() => handleDetails(user._id)}
+                                                className="bg-purple-800 mx-2 text-white px-4 py-2 rounded-lg text-xs md:text-sm"
+                                            >
+                                                Details
                                             </button>
                                         </td>
                                         {console.log("id", user._id)}

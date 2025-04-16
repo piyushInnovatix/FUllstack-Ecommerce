@@ -88,6 +88,7 @@ function AddProduct() {
         productData.append('brand', e.target.brand.value);
         productData.append('category', e.target.category.value);
         productData.append('stock', e.target.stock.value);
+        productData.append('download_url', e.target.download_url.value);
         
         // Format descriptions and FAQs exactly as expected by the backend
         // The backend expects these as JSON strings
@@ -101,7 +102,7 @@ function AddProduct() {
 
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/v1/product/create', {
+            const response = await fetch('https://ecom-kl8f.onrender.com/api/product/create', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -226,6 +227,15 @@ function AddProduct() {
                                 <input
                                     type="number"
                                     name="stock"
+                                    className="w-full border border-gray-300 rounded-lg p-2"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-700 font-semibold mb-2">Download URL</label>
+                                <input
+                                    type="text"
+                                    name="download_url"
                                     className="w-full border border-gray-300 rounded-lg p-2"
                                     required
                                 />

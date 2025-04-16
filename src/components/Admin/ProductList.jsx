@@ -19,7 +19,7 @@ function ProductList() {
 
                 const token = localStorage.getItem('authToken')
 
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/v1/product',
+                const response = await fetch('https://ecom-kl8f.onrender.com/api/product',
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -46,14 +46,14 @@ function ProductList() {
 
             const token = localStorage.getItem('authToken')
 
-            await fetch(`https://ecom-kl8f.onrender.com/api/v1/product/${productId}`, { // Replace with your API endpoint
+            await fetch(`https://ecom-kl8f.onrender.com/api/product/${productId}`, { // Replace with your API endpoint
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             setProduct(product.filter((product) => product._id !== productId));
-            alert('User deleted successfully!');
+            alert('Product deleted successfully!');
         } catch (err) {
             console.error(err);
             alert('Failed to delete user. Please try again.');
@@ -61,7 +61,14 @@ function ProductList() {
     };
 
     if (loading) {
-        return <div className="text-center py-28">Loading...</div>;
+        return (
+            <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
+                <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-800 mx-auto mb-4"></div>
+                    <p className="text-lg text-gray-700">Loading Products...</p>
+                </div>
+            </div>
+        );
     }
 
     if (error) {
@@ -128,6 +135,12 @@ function ProductList() {
                                                 className="bg-red-500 text-white px-4 py-2 rounded-lg text-xs md:text-sm"
                                             >
                                                 Delete
+                                            </button>
+                                            <button
+                                                onClick={() => handleDelete(product._id)}
+                                                className="bg-purple-800 text-white mx-2 px-4 py-2 rounded-lg text-xs md:text-sm"
+                                            >
+                                                Details
                                             </button>
                                         </td>
                                     </tr>

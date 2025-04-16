@@ -16,6 +16,18 @@ export default [
         sourceType: 'module',
       },
     },
+    image: {
+      remotePatterns: [
+        {
+          hostname: "localhost:5173",
+          protocol: "https",
+        },
+        {
+          hostname: "ecom-kl8f.onrender.com",
+          protocol: "https",
+        },
+      ],
+    },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
