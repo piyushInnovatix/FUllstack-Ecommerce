@@ -14,13 +14,13 @@ import UserList from './components/Admin/UserList.jsx'
 import RecentOrders from './components/Admin/RecentOrders.jsx'
 import ProductList from './components/Admin/ProductList.jsx'
 import SingleUser from './components/Admin/SingleUser.jsx'
-import SingleProduct from './components/Admin/singleProduct.jsx'
+import SingleProduct from './components/Admin/SingleProduct.jsx'
 import ResetPassword from './components/ResetPassword.jsx'
+import SingleOrder from './components/Admin/SingleOrder.jsx'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
 import Terms from './components/Terms.jsx'
 import Policies from './components/Policies.jsx'
-import SingleOrder from './components/Admin/SingleOrder.jsx'
 
 const route = createBrowserRouter(
   createRoutesFromElements(
