@@ -1,3 +1,5 @@
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -62,8 +64,9 @@ function Dashboard() {
 
     if (error) {
         return (
-            <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
-                <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+            <div className="pt-20 flex items-center justify-center h-screen bg-gray-50">
+                <div className="text-center py-8 px-6 bg-white rounded-lg shadow-md">
+
                     <p className="text-xl text-red-500 mb-2">Error</p>
                     <p className="text-gray-700">{error}</p>
                 </div>
@@ -72,40 +75,44 @@ function Dashboard() {
     }
 
     return (
-        <div className="pt-20">
+        <div className="pt-8 font-jakarta">
             <div
                 className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2"
                 onClick={handlePanel}
             >
                 <p>{isOpen ? 'Close Panel' : 'Open Panel'}</p>
             </div>
-            <div className="flex h-full bg-teal-600 font-poppins">
+            <div className="flex h-full bg-teal-600">
                 {/* Sidebar */}
                 <div
-                    className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${
-                        isOpen ? 'translate-x-0' : '-translate-x-full'
-                    } transition-all duration-100`}
+                    className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                        } transition-all duration-100`}
                 >
                     <div className="p-6 text-2xl font-bold border-b border-teal-700">Admin Panel</div>
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/userList" className="block">
+                                <Link to="/admin" className="block">
+                                    Dashboard
+                                </Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/userList" className="block">
                                     Registered Users
                                 </Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/orderList" className="block">
+                                <Link to="/admin/orderList" className="block">
                                     Recent Orders
                                 </Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/productList" className="block">
+                                <Link to="/admin/productList" className="block">
                                     Product List
                                 </Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/addProduct" className="block">
+                                <Link to="/admin/addProduct" className="block">
                                     Add Product
                                 </Link>
                             </li>

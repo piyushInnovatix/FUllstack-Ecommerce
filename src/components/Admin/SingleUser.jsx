@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 function SingleUser() {
     const { id } = useParams(); // Get the user ID from the URL
@@ -8,8 +8,11 @@ function SingleUser() {
     const [wishlistItems, setWishlistItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isOpen, setIsOpen] = useState(false); // Sidebar toggle state
 
-
+    const handlePanel = () => {
+        setIsOpen(!isOpen);
+    };
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -29,7 +32,7 @@ function SingleUser() {
                 const data = await response.json();
                 console.log("response", data);
 
-                setUserDetails(data.data);
+                setUserDetails(data.user);
                 setLoading(false);
             } catch (err) {
                 console.error(err);
@@ -44,7 +47,7 @@ function SingleUser() {
     const fetchCartItems = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/cart/${id}`, {
+            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${id}/cart`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -62,10 +65,12 @@ function SingleUser() {
         }
     };
 
+    fetchCartItems();
+
     const fetchWishlistItems = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/user/watchlist/${id}`, {
+            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${id}/watchlist`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -83,6 +88,10 @@ function SingleUser() {
         }
     };
 
+    fetchWishlistItems();
+
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+
     if (loading) {
         return (
             <div className="pt-20 flex items-center justify-center h-screen bg-gray-100">
@@ -99,79 +108,134 @@ function SingleUser() {
     }
 
     return (
-        <div className="py-32 px-6 lg:px-40 xl:px-60 font-poppins">
-            <div className="bg-white border border-teal-200 rounded-lg p-6">
-                <h1 className="text-3xl font-bold mb-6">User Details</h1>
-                <div className="space-y-4">
-                    <p className="text-lg">
-                        <strong>Name:</strong> {userDetails?.name || 'N/A'}
-                    </p>
-                    <p className="text-lg">
-                        <strong>Email:</strong> {userDetails?.email || 'N/A'}
-                    </p>
-                    <p className="text-lg">
-                        <strong>Phone:</strong> {userDetails?.phone || 'N/A'}
-                    </p>
-                    <p className="text-lg">
-                        <strong>Role:</strong> {userDetails?.role || 'N/A'}
-                    </p>
-                </div>
-                <div className="mt-6 flex gap-4">
-                    <button
-                        onClick={fetchCartItems}
-                        className="bg-teal-600 text-white px-4 py-2 rounded-lg"
-                    >
-                        Show Cart Items
-                    </button>
-                    <button
-                        onClick={fetchWishlistItems}
-                        className="bg-teal-600 text-white px-4 py-2 rounded-lg"
-                    >
-                        Show Wishlist Items
-                    </button>
-                </div>
+        <div className="pt-8 font-jakarta">
+            {/* Sidebar Toggle Button */}
+            <div
+                className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2"
+                onClick={handlePanel}
+            >
+                <p>{isOpen ? 'Close Panel' : 'Open Panel'}</p>
             </div>
 
-            {/* Cart Items */}
-            {cartItems.length > 0 && (
-                <div className="mt-10 bg-white shadow rounded-lg p-6">
-                    <h2 className="text-2xl font-semibold mb-4">Cart Items</h2>
-                    <ul className="space-y-4">
-                        {cartItems.map((item) => (
-                            <li key={item.product._id} className="border-b pb-4">
-                                <p>
-                                    <strong>Product:</strong> {item.product.name}
-                                </p>
-                                <p>
-                                    <strong>Quantity:</strong> {item.quantity}
-                                </p>
-                                <p>
-                                    <strong>Price:</strong> ₹{item.product.price}
-                                </p>
+            <div className="flex h-full bg-teal-600">
+                {/* Sidebar */}
+                <div
+                    className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                        } transition-all duration-100`}
+                >
+                    <div className="p-6 text-2xl font-bold border-b border-teal-700">Admin Panel</div>
+                    <nav className="flex-1 p-4">
+                        <ul className="space-y-4">
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin" className="block">
+                                    Dashboard
+                                </Link>
                             </li>
-                        ))}
-                    </ul>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/userList" className="block">
+                                    Registered Users
+                                </Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/orderList" className="block">
+                                    Recent Orders
+                                </Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/productList" className="block">
+                                    Product List
+                                </Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/addProduct" className="block">
+                                    Add Product
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            )}
 
-            {/* Wishlist Items */}
-            {wishlistItems.length > 0 && (
-                <div className="mt-10 bg-white shadow rounded-lg p-6">
-                    <h2 className="text-2xl font-semibold mb-4">Wishlist Items</h2>
-                    <ul className="space-y-4">
-                        {wishlistItems.map((item) => (
-                            <li key={item._id} className="border-b pb-4">
-                                <p>
-                                    <strong>Product:</strong> {item.name}
-                                </p>
-                                <p>
-                                    <strong>Price:</strong> ₹{item.price}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
+                {/* Main Content */}
+                <div className="flex-1 bg-gray-100 p-6 overflow-y-auto">
+                    <div className="bg-white border border-teal-200 rounded-lg p-6">
+                        <h1 className="text-3xl font-bold mb-6">User Details</h1>
+                        <div className="space-y-4">
+                            <p className="text-lg">
+                                <strong>Name:</strong> {userDetails?.name || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>Email:</strong> {userDetails?.email || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>Phone:</strong> {userDetails?.phone || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>Role:</strong> {userDetails?.role || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>User Registered:</strong> {new Date(userDetails?.createdAt).toLocaleDateString('en-IN', options) || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>User Updated:</strong> {new Date(userDetails?.updatedAt).toLocaleDateString('en-IN', options) || 'N/A'}
+                            </p>
+                            <p className="text-lg">
+                                <strong>Is Logged In:</strong> {userDetails?.loggedIn || 'N/A'}
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Cart Items */}
+                    {cartItems.length > 0 ? (
+                        <div className="mt-10 bg-white shadow rounded-lg p-6">
+                            <h2 className="text-2xl font-semibold mb-4">Cart Items</h2>
+                            <ul className="space-y-4">
+                                {cartItems.map((item) => (
+                                    <li key={item.product._id} className="border-b pb-4">
+                                        <p>
+                                            <strong>Product:</strong> {item.product.name}
+                                        </p>
+                                        <p>
+                                            <strong>Quantity:</strong> {item.quantity}
+                                        </p>
+                                        <p>
+                                            <strong>Price:</strong> ₹{item.product.price}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <div className="mt-10 bg-white shadow rounded-lg p-6">
+                            <h2 className="text-2xl font-semibold mb-4">Cart Items</h2>
+                            <p>No items in the cart.</p>
+                        </div>
+                    )}
+
+                    {/* Wishlist Items */}
+                    {wishlistItems.length > 0 ? (
+                        <div className="mt-10 bg-white shadow rounded-lg p-6">
+                            <h2 className="text-2xl font-semibold mb-4">Wishlist Items</h2>
+                            <ul className="space-y-4">
+                                {wishlistItems.map((item) => (
+                                    <li key={item._id} className="border-b pb-4">
+                                        <p>
+                                            <strong>Product:</strong> {item.name}
+                                        </p>
+                                        <p>
+                                            <strong>Price:</strong> ₹{item.price}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <div className="mt-10 bg-white shadow rounded-lg p-6">
+                            <h2 className="text-2xl font-semibold mb-4">Wishlist Items</h2>
+                            <p>No items in the wishlist.</p>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 }

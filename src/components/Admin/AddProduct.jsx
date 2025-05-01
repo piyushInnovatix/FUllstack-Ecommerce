@@ -134,14 +134,14 @@ function AddProduct() {
     };
 
     return (
-        <div className="pt-20">
+        <div className="pt-8 font-jakarta">
             <div
                 className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2"
                 onClick={handlePanel}
             >
                 <p>{isOpen ? 'Close Panel' : 'Open Panel'}</p>
             </div>
-            <div className="flex h-full bg-teal-600 font-poppins">
+            <div className="flex h-full bg-teal-600">
                 {/* Sidebar */}
                 <div
                     className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${
@@ -152,16 +152,19 @@ function AddProduct() {
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/userList" className="block">Registered Users</Link>
+                                <Link to="/admin" className="block">Dashboard</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/orderList" className="block">Recent Orders</Link>
+                                <Link to="/admin/userList" className="block">Registered Users</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/productList" className="block">Product List</Link>
+                                <Link to="/admin/orderList" className="block">Recent Orders</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to="/addProduct" className="block">Add Product</Link>
+                                <Link to="/admin/productList" className="block">Product List</Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to="/admin/addProduct" className="block">Add Product</Link>
                             </li>
                         </ul>
                     </nav>

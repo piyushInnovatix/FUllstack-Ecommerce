@@ -22,13 +22,15 @@ function RecentOrders() {
             Authorization: `Bearer ${token}`
           }
         });
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch orders');
         }
-        
+
         const data = await response.json();
         setOrders(data.orders);
+        console.log(data.orders);
+
         setLoading(false);
       } catch (err) {
         console.error(err);
@@ -43,6 +45,10 @@ function RecentOrders() {
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const navigateToDetails = (orderId) => () => {
+    window.location.href = `/admin/orderdetails/${orderId}`;
   };
 
   if (loading) {
@@ -68,34 +74,36 @@ function RecentOrders() {
   }
 
   return (
-    <div className="pt-20">
-      <button 
+    <div className="pt-8 font-jakarta">
+      <button
         className="block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 fixed right-2 z-10"
         onClick={handlePanel}
       >
         {isOpen ? "Close Panel" : "Open Panel"}
       </button>
-      
-      <div className="flex h-full bg-teal-600 font-poppins">
+
+      <div className="flex h-full bg-teal-600">
         {/* Sidebar */}
-        <div className={`fixed md:relative w-64 h-screen bg-teal-600 text-white flex flex-col z-20 
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-all duration-300`}>
+        <div className={`fixed md:relative w-64 h-screen bg-teal-600 text-white flex flex-col ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-all duration-300`}>
           <div className="p-6 text-2xl font-bold border-b border-teal-700">
             Admin Panel
           </div>
           <nav className="flex-1 p-4">
             <ul className="space-y-4">
               <li className="hover:bg-teal-700 p-2 rounded transition">
-                <Link to="/userList" className="block">Registered Users</Link>
+                <Link to="/admin" className="block">Dashboard</Link>
+              </li>
+              <li className="hover:bg-teal-700 p-2 rounded transition">
+                <Link to="/admin/userList" className="block">Registered Users</Link>
               </li>
               <li className="bg-teal-700 p-2 rounded">
-                <Link to="/orderList" className="block">Recent Orders</Link>
+                <Link to="/admin/orderList" className="block">Recent Orders</Link>
               </li>
               <li className="hover:bg-teal-700 p-2 rounded transition">
-                <Link to="/productList" className="block">Product List</Link>
+                <Link to="/admin/productList" className="block">Product List</Link>
               </li>
               <li className="hover:bg-teal-700 p-2 rounded transition">
-                <Link to="/addProduct" className="block">Add Product</Link>
+                <Link to="/admin/addProduct" className="block">Add Product</Link>
               </li>
             </ul>
           </nav>
@@ -103,7 +111,7 @@ function RecentOrders() {
 
         {/* Main Content */}
         <div className="flex-1 bg-gray-100 p-4 md:p-6 overflow-y-auto min-h-screen">
-          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-teal-900">Recent Orders</h1>
+          <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-teal-600">Recent Orders</h1>
 
           {/* Orders Cards for Mobile */}
           <div className="md:hidden space-y-4">
@@ -114,9 +122,10 @@ function RecentOrders() {
                   <span className="text-sm text-gray-500">{formatDate(order.createdAt)}</span>
                 </div>
                 <div className="mb-2">
-                  <p className="text-sm"><span className="font-medium">Customer:</span> {order.user.name}</p>
-                  <p className="text-sm"><span className="font-medium">Email:</span> {order.user.email}</p>
-                  <p className="text-sm"><span className="font-medium">Status:</span> 
+                  <p className="text-sm"><span className="font-medium">Customer:</span> {order.user?.name || "Deleted User"}</p>
+
+                  <p className="text-sm"><span className="font-medium">Email:</span> {order.user?.email || "Deleted User"}</p>
+                  <p className="text-sm"><span className="font-medium">Status:</span>
                     <span className={`ml-1 ${order.status === 'downloaded' ? 'text-green-600' : 'text-yellow-600'}`}>
                       {order.status}
                     </span>
@@ -143,12 +152,12 @@ function RecentOrders() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-teal-50 text-left">
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Order ID</th>
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Customer</th>
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Items</th>
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Total</th>
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Status</th>
-                  <th className="p-3 font-semibold text-teal-900 border-b-2 border-teal-100">Date</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Order ID</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Customer</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Items</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Total</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Status</th>
+                  <th className="p-3 font-semibold text-teal-600 border-b-2 border-teal-100">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -156,8 +165,8 @@ function RecentOrders() {
                   <tr key={order._id} className="hover:bg-gray-50 border-b border-gray-100">
                     <td className="p-3 text-sm">{order._id.slice(-6)}</td>
                     <td className="p-3">
-                      <div className="text-sm font-medium">{order.user.name}</div>
-                      <div className="text-xs text-gray-500">{order.user.email}</div>
+                      <div className="text-sm font-medium">{order.user?.name || "Deleted User"}</div>
+                      <div className="text-xs text-gray-500">{order.user?.email || "Deleted User"}</div>
                     </td>
                     <td className="p-3">
                       <div className="text-sm">
@@ -175,13 +184,13 @@ function RecentOrders() {
                         {order.status}
                       </span>
                     </td>
-                    <td className="p-3 text-sm text-gray-500">{formatDate(order.createdAt)}</td>
+                    <td className="p-3 text-sm text-gray-500"><button onClick={navigateToDetails(order._id)} className='bg-teal-600 p-2 rounded-sm text-white'>Details</button></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          
+
           {orders.length === 0 && (
             <div className="bg-white shadow rounded-lg p-8 text-center">
               <p className="text-gray-500">No orders found.</p>

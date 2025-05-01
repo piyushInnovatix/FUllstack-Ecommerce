@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ProductList() {
 
@@ -7,6 +7,8 @@ function ProductList() {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate()
 
     const handlePanle = () => {
         setIsOpen(!isOpen)
@@ -42,7 +44,6 @@ function ProductList() {
 
     const handleDelete = async (productId) => {
         try {
-            setLoading(true)
 
             const token = localStorage.getItem('authToken')
 
@@ -58,6 +59,10 @@ function ProductList() {
             console.error(err);
             alert('Failed to delete user. Please try again.');
         }
+    };
+
+    const showDetails = async (productId) => {
+        navigate(`/admin/singleProduct/${productId}`); // Navigate to the SingleUser page with the userId
     };
 
     if (loading) {
@@ -76,11 +81,11 @@ function ProductList() {
     }
 
     return (
-        <div className='pt-20'>
+        <div className='pt-8 font-jakarta'>
             <div className='block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2' onClick={handlePanle}>
                 <p>{isOpen ? ("Close Panel") : ("Open Panel")}</p>
             </div>
-            <div className="flex flex-col md:flex-row h-full bg-teal-600 font-poppins">
+            <div className="flex flex-col md:flex-row h-full bg-teal-600">
                 {/* Sidebar */}
                 <div className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? ("translate-x-0") : ("-translate-x-full")} transition-all duration-100`}>
                     <div className="p-6 text-2xl font-bold border-b border-teal-700">
@@ -89,16 +94,19 @@ function ProductList() {
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/userList"} className="block">Registered Users</Link>
+                                <Link to={"/admin"} className="block">Dashboard</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/orderList"} className="block">Recent Orders</Link>
+                                <Link to={"/admin/userList"} className="block">Registered Users</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/productList"} className="block">Product List</Link>
+                                <Link to={"/admin/orderList"} className="block">Recent Orders</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/addProduct"} className="block">Add Product</Link>
+                                <Link to={"/admin/productList"} className="block">Product List</Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to={"/admin/addProduct"} className="block">Add Product</Link>
                             </li>
                         </ul>
                     </nav>
@@ -137,7 +145,7 @@ function ProductList() {
                                                 Delete
                                             </button>
                                             <button
-                                                onClick={() => handleDelete(product._id)}
+                                                onClick={() => showDetails(product._id)}
                                                 className="bg-teal-600 text-white mx-2 px-4 py-2 rounded-lg text-xs md:text-sm"
                                             >
                                                 Details

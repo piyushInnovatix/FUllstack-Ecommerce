@@ -41,7 +41,7 @@ function UserList() {
     const handleDelete = async (userId) => {
         try {
             const token = localStorage.getItem('authToken')
-            await fetch(`https://ecom-kl8f.onrender.com/api/v1/admin/user/${userId}`, { // Replace with your API endpoint
+            await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -58,7 +58,7 @@ function UserList() {
     };
 
     const handleDetails = (userId) => {
-        navigate(`/singleUser/${userId}`); // Navigate to the SingleUser page with the userId
+        navigate(`/admin/singleUser/${userId}`); // Navigate to the SingleUser page with the userId
     };
 
     if (loading) {
@@ -76,11 +76,11 @@ function UserList() {
     }
 
     return (
-        <div className='pt-20'>
+        <div className='pt-8 font-jakarta'>
             <div className='block md:hidden bg-teal-600 text-white text-center rounded-full m-4 w-28 p-2 right-2' onClick={handlePanle}>
                 <p>{isOpen ? ("Close Panel") : ("Open Panel")}</p>
             </div>
-            <div className="flex flex-col md:flex-row h-full bg-teal-600 font-poppins">
+            <div className="flex flex-col md:flex-row h-full bg-teal-600">
                 {/* Sidebar */}
                 <div className={`absolute h-screen md:relative md:translate-x-0 w-64 bg-teal-600 text-white flex flex-col ${isOpen ? ("translate-x-0") : ("-translate-x-full")} transition-all duration-100`}>
                     <div className="p-6 text-2xl font-bold border-b border-teal-700">
@@ -89,16 +89,19 @@ function UserList() {
                     <nav className="flex-1 p-4">
                         <ul className="space-y-4">
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/userList"} className="block">Registered Users</Link>
+                                <Link to={"/admin"} className="block">Dashboard</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/orderList"} className="block">Recent Orders</Link>
+                                <Link to={"/admin/userList"} className="block">Registered Users</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/productList"} className="block">Product List</Link>
+                                <Link to={"/admin/orderList"} className="block">Recent Orders</Link>
                             </li>
                             <li className="hover:bg-teal-700 p-2 rounded">
-                                <Link to={"/addProduct"} className="block">Add Product</Link>
+                                <Link to={"/admin/productList"} className="block">Product List</Link>
+                            </li>
+                            <li className="hover:bg-teal-700 p-2 rounded">
+                                <Link to={"/admin/addProduct"} className="block">Add Product</Link>
                             </li>
                         </ul>
                     </nav>
